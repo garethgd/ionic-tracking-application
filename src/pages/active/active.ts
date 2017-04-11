@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-import { Geofence } from 'ionic-native';
+import { Geofence } from '@ionic-native/geofence';
 import { HomePage } from '../home/home';
 
 /*
@@ -15,14 +15,14 @@ import { HomePage } from '../home/home';
 })
 export class ActivePage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) { }
+  constructor(public navCtrl: NavController, public navParams: NavParams, private geofence: Geofence) { }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ActivePage');
   }
 
   removeFence() {
-    Geofence.removeAll();
+    this.geofence.removeAll();
     this.navCtrl.push(HomePage);
   }
 }

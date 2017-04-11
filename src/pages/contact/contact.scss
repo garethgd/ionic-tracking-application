@@ -1,3 +1,22 @@
 page-contact {
+#cta {
+  margin: 3em auto 0 auto;
+    display: block;
+    width: 50%;
+   
+    font-size: 1.1em;
+    border: solid 1px #452323;
+  
+    padding: 10px 0;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #452323;
+    text-align: center;
+        background-color: #dac6b5;
+  @media only screen and (max-width:40.063em) {
+ width:100%;
+}
+}
+
 
 }

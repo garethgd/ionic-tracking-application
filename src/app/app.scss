@@ -1,9 +1,128 @@
 // http://ionicframework.com/docs/v2/theming/
-
 .page {
-    background-color: #263E44 !important;
-    color:#fff;
+  background-color: #263E44 !important;
+  color: #fff;
 }
+
+.fixed-content {
+  background-color: #dac6b5;
+}
+
+body {
+  background-color: #dac6b5;
+}
+
+.tabs-md .tab-button {
+  padding: 0;
+  min-height: 5.6rem;
+  background-color: #dac6b5;
+  font-weight: normal;
+  color: rgba(60, 60, 60, 0.7);
+}
+
+.enable-hover a:hover {
+  opacity: 0.9;
+  background: #401d00;
+  color: white;
+}
+
+.tabs-md .tab-button[aria-selected=true] {
+  padding: 0;
+  // color: white;
+}
+.tabs-md .tab-button[aria-selected=true] {
+    color:white;
+}
+.tab-button:hover {
+  .tab-button-icon {
+    color: white;
+  }
+}
+.tabs-md .tab-button[aria-selected=true]  {
+  
+  &:hover{
+    .tab-button-icon {
+    color: white;
+  }
+
+  span{
+    color:white;
+  }
+  }
+
+  
+}
+.tabs-md .tab-button[aria-selected=true] .tab-button-icon {
+  
+  -webkit-transform: translate3d(0, -2px, 0);
+  transform: translate3d(0, -2px, 0);
+
+
+}
+
+.toolbar-background {
+  color: white;
+  font-weight: lighter;
+  background-color: #dac6b5;
+  border-bottom: solid 1px #401d00;
+}
+
+.tabs-md .tab-button-icon {
+  color: white;
+}
+
+.tabs-md .tab-button-icon {
+  color: #401d00;
+}
+
+ion-icon {
+  color: #401d00;
+}
+
+.tabs-md .tab-button[aria-selected=true] {
+  padding: 0;
+  color: rgba(60, 60, 60, 0.7);
+}
+
+.toolbar-title {
+  font-weight: lighter;
+  color: #401D00;
+}
+
+@-webkit-keyframes slideInBothWays {
+  0% {
+    transform: translate3d(100%, 0, 0);
+  }
+  50% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.slide-in-both-ways {
+  animation: slideInBothWays ease-in 1;
+  animation-duration: 550ms;
+}
+
+@-webkit-keyframes slideInLeft {
+  0% {
+    transform: translate3d(-100%, 0, 0);
+  }
+  50% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.slideInLeft {
+  animation: slideInBothWays ease-in 1;
+  animation-duration: 550ms;
+}
+
 // App Global Sass
 // --------------------------------------------------
 // Put style rules here that you want to apply globally. These

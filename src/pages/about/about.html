@@ -1,11 +1,17 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>
-      About
-    </ion-title>
+      <!--Basic: auto-select the icon based on the platform -->
+  <ion-icon name="cafe"></ion-icon>
+
+    <ion-title>Your local coffee shops</ion-title>
   </ion-navbar>
 </ion-header>
+ 
 
-<ion-content padding>
+<div #pleaseConnect id="please-connect">
+    <p>Please connect to the Internet...</p>
+  </div>
 
+<ion-content class="slideInLeft">
+  <div #map id="map"></div>  
 </ion-content>
