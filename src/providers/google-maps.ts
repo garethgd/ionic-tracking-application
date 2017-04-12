@@ -1,6 +1,8 @@
+import { InfoWindow } from 'angular2-google-maps/core/services/google-maps-types';
 import { Injectable } from '@angular/core';
 import { ConnectivityService } from './connectivity-service';
 import { Geolocation } from '@ionic-native/geolocation';
+import { MarkerStyleRetro } from '../pages/marker/marker';
 
 declare var google;
 
@@ -14,7 +16,7 @@ export class GoogleMaps {
   mapLoaded: any;
   mapLoadedObserver: any;
   markers: any = [];
-
+  styles: any = MarkerStyleRetro;
 
   apiKey = "AIzaSyD9DG-l3nQM0seilByyK4ye58nU7YayA38"
 
@@ -101,7 +103,7 @@ export class GoogleMaps {
           center: latLng,
           zoom: 15,
           mapTypeId: google.maps.MapTypeId.ROADMAP,
-         
+          styles: this.styles
         }
 
         this.map = new google.maps.Map(this.mapElement, mapOptions);
@@ -162,22 +164,54 @@ export class GoogleMaps {
 
   }
 
-  addMarker(lat: number, lng: number): void {
+  addMarker(lat: number, lng: number, iconUrl: string, infoName: any): void {
+
+
+    var infoContent = '<div id="iw-container">' +
+      '<div class="iw-title">' + infoName +
+      '<div class="iw-content">' +
+      '<div (click)="onAddPlace(location)" class="iw-subTitle"></div>' +
+      '<img src="http://maps.marnoto.com/en/5wayscustomizeinfowindow/images/vistalegre.jpg" alt="Porcelain Factory of Vista Alegre" height="115" width="83">' +
+      '<p></p>' +
+
+      '<p><br>' +
+      '<br>Phone. +351 234 320 600<br>e-mail: geral@vaa.pt<br>www: www.myvistaalegre.com</p>' +
+      '</div>' +
+      '</div>';
 
     let latLng = new google.maps.LatLng(lat, lng);
+    let infowindow = new google.maps.InfoWindow({
+      content: infoContent
+    });
+
+
 
     let marker = new google.maps.Marker({
       map: this.map,
       animation: google.maps.Animation.DROP,
       position: latLng,
-       icon: {
-            url: '/assets/images/coffee-cup.png',
-           size: new google.maps.Size(20, 32),
-          }
+      icon: {
+        url: './assets/images/coffee-cup.png',
+        scaledSize: new google.maps.Size(20, 20),
+      }
     });
+    marker.addListener('click', toggleBounce);
+    marker.addListener('click', info);
+    function info() {
+      infowindow.open(this.map, marker);
+    }
 
+    function toggleBounce() {
+      if (marker.getAnimation() !== null) {
+        marker.setAnimation(null);
+      } else {
+        marker.setAnimation(google.maps.Animation.BOUNCE);
+      }
+    }
     this.markers.push(marker);
 
   }
+
+ 
 
 }

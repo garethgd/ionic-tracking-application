@@ -1,6 +1,6 @@
 import { Component, trigger, state, style, transition, animate, keyframes } from '@angular/core';
 import { NavController, Platform, ToastController } from 'ionic-angular';
-
+import { Locations } from '../../providers/locations';
 import { Geofence } from '@ionic-native/geofence';
 
 import { Geolocation } from '@ionic-native/geolocation';
@@ -70,8 +70,6 @@ export class HomePage {
   fadeState: String = 'visible';
   bounceState: String = 'noBounce';
 
-
-
   toggleFlip() {
     this.flipState = (this.flipState == 'notFlipped') ? 'flipped' : 'notFlipped';
   }
@@ -94,9 +92,12 @@ export class HomePage {
     this.bounceState = (this.bounceState == 'noBounce') ? 'bouncing' : 'noBounce';
   }
 
-  constructor(public navCtrl: NavController, private platform: Platform, private geolocation: Geolocation, private geofence : Geofence, private toastCtrl: ToastController) {
+  constructor(public navCtrl: NavController, private platform: Platform, private geolocation: Geolocation, private geofence: Geofence,
+    private toastCtrl: ToastController, public locations: Locations) {
     this.tabBarElement = document.querySelector('.tabbar');
-    
+
+
+
     this.platform.ready().then(() => {
 
       this.geofence.initialize().then(
@@ -111,10 +112,24 @@ export class HomePage {
     setTimeout(() => {
       this.jelly = false;
       this.tabBarElement.style.display = 'flex';
+
+      let toast = this.toastCtrl.create({
+        message: "Set the search radius for coffee in your area.",
+        duration: 8000,
+        showCloseButton: true,
+        closeButtonText: "Close"
+      });
+
+      toast.onDidDismiss(() => {
+        console.log("Toast buton clicked");
+
+        ///undo operation
+      });
+      toast.present();
     }, 4000)
   }
   setGeofence(value: number) {
-
+    this.locations.setRadius(value)
     this.geolocation.getCurrentPosition({
       enableHighAccuracy: true
     }).then((resp) => {

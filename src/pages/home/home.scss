@@ -30,7 +30,7 @@ img{
   width: 10em;
 }
 .backdrop {
-  background: url(/assets/images/coffee-bg.jpg);
+  background: url(../assets/images/coffee-bg.jpg);
   height: 55%;
   background-size: cover;
   background-repeat: no-repeat;
@@ -78,8 +78,9 @@ img{
   letter-spacing: 2px;
   font-size: .85em;
   color: #452323;
-  margin-top: 0;
+ margin: 30px 0;
   text-align: center;
+  
 }
 
 .range-md .range-pin {

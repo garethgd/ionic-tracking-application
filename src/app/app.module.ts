@@ -5,7 +5,8 @@ import { MyApp } from './app.component';
 import { Geolocation } from '@ionic-native/geolocation';
 import { Place } from '../model/place.model';
 import { AboutPage } from '../pages/about/about';
-import { ContactPage } from '../pages/contact/contact';
+import { LocationsListPage } from '../pages/locations-list/locations-list';
+import { LocationDetailsPage } from '../pages/location-details/location-details';
 import { Geofence } from '@ionic-native/geofence';
 import { NewPlacePage } from '../pages/new-place/new-place';
 import { PlacePage } from '../pages/place/place';
@@ -25,12 +26,13 @@ import { GoogleMaps } from '../providers/google-maps';
   declarations: [
     MyApp,
     AboutPage,
-    ContactPage,
+    LocationsListPage,
     HomePage,
     TabsPage,
     ActivePage,
     NewPlacePage,
-    PlacePage
+    PlacePage,
+    LocationDetailsPage
   ],
   imports: [
     IonicModule.forRoot(MyApp),
@@ -43,12 +45,13 @@ import { GoogleMaps } from '../providers/google-maps';
   entryComponents: [
     MyApp,
     AboutPage,
-    ContactPage,
+    LocationsListPage,
     HomePage,
     TabsPage,
     ActivePage,
     NewPlacePage,
-    PlacePage
+    PlacePage,
+    LocationDetailsPage
   ],
   providers: [{ provide: ErrorHandler, useClass: IonicErrorHandler }, ConnectivityService, PlacesService, Storage, Geolocation, SplashScreen, StatusBar, Geofence, Network, Locations, GoogleMaps]
 })

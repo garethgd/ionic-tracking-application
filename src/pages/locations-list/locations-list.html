@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-navbar color="secondary">
+    <ion-title>
+      Local Locations
+    </ion-title>
+    <ion-buttons (click)="onLoadNewPlace()" end>
+      <ion-icon name="add"> </ion-icon>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+<ion-content class="slideInLeft">
+  <ion-list>
+    <ion-item *ngFor="let location of locations.data" (click)="onOpenPlace(location)">
+      <ion-avatar item-left>
+        <ion-icon name="pin"></ion-icon>
+      </ion-avatar>
+      <h2>{{location.name}}</h2>
+      <p>{{location.distance}} miles away</p>
+    </ion-item>
+  </ion-list>
+  <!--<button id="cta" (click)="onLoadNewPlace()">Add a location for coffee</button>-->
+</ion-content>

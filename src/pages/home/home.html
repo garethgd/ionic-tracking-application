@@ -1,3 +1,5 @@
+
+
 <div id="custom-overlay" [style.display]="jelly ? 'flex': 'none'">
   <div class="flb">
     <div class="Aligner-item Aligner-item--top"></div>
@@ -8,19 +10,18 @@
 <ion-content class="page slide-in-both-ways ">
   <ion-item class="backdrop">
   </ion-item>
-  <h1>Dublin Coffee</h1>
+  <!--<h1>Dublin Coffee</h1>-->
+   <ion-label color="secondary" id="lbl">Find the best coffee near you.</ion-label>
   <!--<div class="loader"></div>-->
   <img src="assets/images/coffee-bean-icon.png">
   <div class="bottom-container">
     <ion-item>
       <ion-range [(ngModel)]="radius" #radiusVal min="40" max="300" color="primary" pin="true" snaps="true" step="20">
       </ion-range>
-     
     </ion-item>
-     <p> {{radius}} meters </p>
-    <ion-label color="secondary" id="lbl">Find the best coffee near you.</ion-label>
+    <ion-label color="secondary" id="lbl">{{radius}} meters</ion-label>
+   
     <button ion-button large outline block (click)="setGeofence(radiusVal.value)" (click)="toggleFlip()" id="cta" color="primary">Find Coffee</button>
     <p *ngIf="error">{{ error }}</p>
-   
   </div>
 </ion-content>

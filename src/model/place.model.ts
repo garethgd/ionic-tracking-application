@@ -1,7 +1,10 @@
 export interface Place {
   title: string;
   location: {
-    lat: number,
-    lng: number
+    icon: string,
+    rating: number,
+    image: string,
+    vicinity: string
+    desc: string
   }
 }

@@ -17,7 +17,13 @@ export class PlacesService {
         this.storage.set('places', this.places);
 
     }
+    setRadius(radius) {
+        this.storage.set('radius', radius)
+    }
 
+    getRadius() {
+        return this.storage.get('radius')
+    }
     getPlaces() {
         return this.storage.get('places')
             .then(

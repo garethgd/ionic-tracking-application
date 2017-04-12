@@ -25,12 +25,13 @@ export class NewPlacePage {
       }
       )
   }
-  onAddPlace(value: { title: string }) {
-    console.log("hello")
-    console.log(value);
-    this.placesService.addPlace({ title: value.title, location: this.location });
-    this.navCtrl.pop();
+  
+  // onAddPlace(value: { title: string }) {
+  
+  //   console.log(value);
+  //   this.placesService.addPlace({ title: value.title, location: this.location });
+  //   this.navCtrl.pop();
 
-  }
+  // }
 
 }

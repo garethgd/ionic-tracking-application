@@ -15,7 +15,8 @@ export class AboutPage {
   @ViewChild('map') mapElement: ElementRef;
   @ViewChild('pleaseConnect') pleaseConnect: ElementRef;
   coords: string;
-
+  lat: any;
+  lng : any;
   constructor(public navCtrl: NavController, public maps: GoogleMaps, public platform: Platform, public locations: Locations, private geolocation: Geolocation) {
 
 
@@ -32,9 +33,10 @@ export class AboutPage {
       this.geolocation.getCurrentPosition().then(pos => {
 
         this.coords = pos.coords.latitude + ',' + pos.coords.longitude;
-
+        this.lat = pos.coords.latitude;
+        this.lng = pos.coords.longitude;
         let mapLoaded = this.maps.init(this.mapElement.nativeElement, this.pleaseConnect.nativeElement);
-        let locationsLoaded = this.locations.load(this.coords);
+        let locationsLoaded = this.locations.load(this.lat, this.lng);
 
        
         Promise.all([
@@ -47,7 +49,7 @@ export class AboutPage {
           console.log(result);
           for (let location of locations) {
            
-            this.maps.addMarker(location.geometry.location.lat, location.geometry.location.lng);
+            this.maps.addMarker(location.geometry.location.lat, location.geometry.location.lng ,"h", "h");
           }
 
         });
